@@ -55,5 +55,4 @@ def main():
     demo_eta = model.predict(demo)[0]
     print(f"🔮 Demo prediction for distance=5km, prep=15m, traffic=3 → ETA ≈ {demo_eta:.1f} minutes")
 
-if _name_ == "_main_":
-   main()
+if _name_ == "_main_": main()
