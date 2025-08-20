@@ -1,0 +1,32 @@
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LinearRegression
+import joblib
+
+# Load dataset (replace 'data.csv' with your file if you have real orders)
+data = pd.read_csv("data.csv")
+
+# Features and target
+X = data[["distance_km", "prep_time_min", "traffic_index"]]
+y = data["delivery_time_min"]
+
+# Train-test split
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# Model
+model = LinearRegression()
+model.fit(X_train, y_train)
+
+# Save the model
+joblib.dump(model, "eta_model.pkl")
+
+# Quick test
+print("Model trained! R² score:", model.score(X_test, y_test))
+
+# Function for making predictions
+def predict_eta(distance, prep_time, traffic):
+    model = joblib.load("eta_model.pkl")
+    return model.predict([[distance, prep_time, traffic]])[0]
+
+# Example usage
+print("Predicted ETA (mins):", predict_eta(5, 10, 3))

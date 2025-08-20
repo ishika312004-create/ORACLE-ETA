@@ -1,0 +1,16 @@
+# ETA Oracle 🚴‍♂🍕
+
+A mini machine learning project that predicts *food delivery times* based on:
+- Distance (km)
+- Restaurant preparation time (minutes)
+- Traffic index (scale 1–10)
+
+## 📊 How it Works
+1. Load order data (distance, prep time, traffic, actual delivery time).
+2. Train a Linear Regression model.
+3. Predict Estimated Time of Arrival (ETA) for new orders.
+
+## 🛠 Requirements
+Install dependencies with:
+```bash
+pip install -r requirements.txt
